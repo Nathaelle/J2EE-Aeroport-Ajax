@@ -80,7 +80,7 @@ public class Aeroport implements Crud<Aeroport> {
 	@Override
 	public void insert() {
 		
-		String query = "INSERT INTO aeroports (nom, adresse, adresse_gps, max_nb_avions, max_accueil) VALUES(?, ?, ?, ?, ?);";
+		String query = "INSERT INTO aeroport (nom, adresse, adresse_gps, max_nb_avions, max_accueil) VALUES(?, ?, ?, ?, ?);";
 		
 		try(PreparedStatement p = DbConnect.getConnector().prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 			
@@ -107,7 +107,7 @@ public class Aeroport implements Crud<Aeroport> {
 	public ArrayList<Aeroport> selectAll() {
 		ArrayList<Aeroport> aeroports = new ArrayList<Aeroport>();
 
-		String query = "SELECT id_aeroport, nom, adresse, adresse_gps, max_nb_avions, max_accueil FROM aeroports;";
+		String query = "SELECT id_aeroport, nom, adresse, adresse_gps, max_nb_avions, max_accueil FROM aeroport;";
 
 		try(PreparedStatement p = DbConnect.getConnector().prepareStatement(query)) {
 			
@@ -137,7 +137,7 @@ public class Aeroport implements Crud<Aeroport> {
 	@Override
 	public Aeroport select() {
 		
-		String query = "SELECT id_aeroport, nom, adresse, adresse_gps, max_nb_avions, max_accueil FROM aeroports WHERE id_aeroport = ?;";
+		String query = "SELECT id_aeroport, nom, adresse, adresse_gps, max_nb_avions, max_accueil FROM aeroport WHERE id_aeroport = ?;";
 		
 		try(PreparedStatement p = DbConnect.getConnector().prepareStatement(query)) {
 			
@@ -169,7 +169,7 @@ public class Aeroport implements Crud<Aeroport> {
 	@Override
 	public void update() {
 
-		String query = "UPDATE aeroports SET nom = ?, adresse = ?, adresse_gps = ?, max_nb_avions = ?, max_accueil = ? WHERE id_aeroport = ? ";
+		String query = "UPDATE aeroport SET nom = ?, adresse = ?, adresse_gps = ?, max_nb_avions = ?, max_accueil = ? WHERE id_aeroport = ? ";
 		
 		try(PreparedStatement p = DbConnect.getConnector().prepareStatement(query)) {
 			
@@ -194,7 +194,7 @@ public class Aeroport implements Crud<Aeroport> {
 	@Override
 	public void delete() {
 
-		String query = "DELETE FROM aeroports WHERE id_aeroport = ? ;";
+		String query = "DELETE FROM aeroport WHERE id_aeroport = ? ;";
 		
 		try(PreparedStatement p = DbConnect.getConnector().prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 			
