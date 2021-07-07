@@ -110,21 +110,20 @@ public class Vol implements Crud<Vol> {
 		
 		try(PreparedStatement p = DbConnect.getConnector().prepareStatement(query)) {
 			
-			// Binding sur requête préparée
-			p.setInt(1, this.idVol);
 			
 			ResultSet result = p.executeQuery();
 			
 			while(result.next()) {
 				
-				this.setIdVol(result.getInt("id_vol"));
-				this.setDuree(result.getInt("duree"));
-				this.setDateHeureDepart(result.getDate("date_heure_depart"));
-				this.setDateHeureArrivee(result.getDate("date_heure_arrivee"));
-				this.setIdAvion(result.getInt("id_avion"));
-				this.setIdPisteDepart(result.getInt("id_piste_depart"));
-				this.setIdPisteArrivee(result.getInt("id_piste_arrivee"));
-				
+				Vol v = new Vol();
+				v.setIdVol(result.getInt("id_vol"));
+				v.setDuree(result.getInt("duree"));
+				v.setDateHeureDepart(result.getDate("date_heure_depart"));
+				v.setDateHeureArrivee(result.getDate("date_heure_arrivee"));
+				v.setIdAvion(result.getInt("id_avion"));
+				v.setIdPisteDepart(result.getInt("id_piste_depart"));
+				v.setIdPisteArrivee(result.getInt("id_piste_arrivee"));
+				vols.add(v);
 			}
 			
 			DbConnect.getConnector().close();
